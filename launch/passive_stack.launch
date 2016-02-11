@@ -13,9 +13,9 @@
 
     <include  file="$(find iarc7_launch)/launch/localization.launch" />
 
-    <!--<include file="$(find iarc7_sensors)/launch/obstacle_detector.launch">
+    <include file="$(find iarc7_launch)/launch/nuc_sensors.launch">
         <arg name="platform" value="$(arg platform)" />
-    </include>-->
+    </include>
 
     <include if="$(eval str(arg('platform')) != 'sim_1.5')"
              file="$(find iarc7_vision)/launch/vision_node.launch">
