@@ -3,6 +3,7 @@
     <include file="$(find iarc7_simulator)/launch/static_transforms_sim.launch" />
 
     <include file="$(find iarc7_simulator)/launch/morse.launch" />
+    <include file="$(find iarc7_simulator)/launch/simulator_adapter.launch" />
 
     <include file="$(find iarc7_safety)/launch/iarc7_safety.launch">
         <arg name="bondIds" default="['low_level_motion', 'motion_planner']"/>
