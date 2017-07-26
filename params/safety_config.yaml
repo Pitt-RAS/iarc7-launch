@@ -33,3 +33,5 @@ safety_bonds:
         priority: 1000
     invalid_task_transition_test:
         priority: 1000
+    competition_demo_abstract:
+        priority: 1000
