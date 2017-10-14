@@ -11,7 +11,7 @@ safety_bonds:
         priority: 150
     low_level_motion:
         priority: 200
-    motion_planner:
+    high_level_motion:
         priority: 250
     takeoff_land_abstract:
         priority: 1000

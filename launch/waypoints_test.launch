@@ -10,5 +10,5 @@
     <include file="$(find iarc7_launch)/launch/localization.launch" />
 
     <node name="waypoints_test" pkg="iarc7_motion" type="waypoints_test.py" />
-    <param name="safety_bonds/motion_planner/form_bond" value="true" />
+    <param name="safety_bonds/high_level_motion/form_bond" value="true" />
 </launch>
