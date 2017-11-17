@@ -1,0 +1,10 @@
+<launch>
+    <arg name="sim" default="false" doc="true if we are running in the sim" />
+    <node name="high_level_motion_unit_test" pkg="iarc7_abstract" type="high_level_motion_unit_test.py" />
+    <param name="safety_bonds/high_level_motion_unit_test/form_bond" value="true" />
+
+    <include file="$(find iarc7_launch)/launch/main.launch">
+        <arg name="sim" value="$(arg sim)" />
+    </include>
+
+</launch>

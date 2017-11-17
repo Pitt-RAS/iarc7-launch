@@ -31,3 +31,5 @@ safety_bonds:
         priority: 1000
     roomba_request_executer_test_abstract:
         priority: 1000
+    high_level_motion_unit_test:
+        priority: 1000
