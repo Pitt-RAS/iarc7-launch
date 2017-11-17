@@ -1,14 +1,37 @@
 <launch>
+    <arg name="sim" default="false" doc="true if we are running in the sim" />
+    <node name="waypoints_test" pkg="iarc7_motion" type="waypoints_test.py" />
+    <param name="safety_bonds/motion_planner/form_bond" value="true" />
+    
+	<arg name="bond_id_namespace" default="safety_bonds" />
+    <arg name="fake_bat" default="false" doc="create a fake motor battery publisher" />
+
     <include file="$(find iarc7_launch)/launch/base_hardware.launch">
-        <arg name="sim" value="true" />
+        <arg name="sim" value="$(arg sim)" />
+        <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
 
     <include file="$(find iarc7_motion)/launch/low_level_motion.launch">
-        <arg name="platform" value="sim" />
+        <arg name="platform" value="1.0" unless="$(arg sim)" />
+        <arg name="platform" value="sim" if="$(arg sim)" />
+        <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
 
     <include file="$(find iarc7_launch)/launch/localization.launch" />
 
-    <node name="waypoints_test" pkg="iarc7_motion" type="waypoints_test.py" />
-    <param name="safety_bonds/motion_planner/form_bond" value="true" />
+    <include file="$(find iarc7_vision)/launch/vision_node.launch" >
+        <arg name="platform" value="1.0" unless="$(arg sim)" />
+        <arg name="platform" value="sim" if="$(arg sim)" />
+    </include>
+
+    <include file="$(find iarc7_sensors)/launch/vel_filter.launch">
+        <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+        <arg name="position_passthrough" value="$(arg sim)" />
+    </include>
+
+    <!-- if we need a fake motor publisher -->
+    <group if="$(arg fake_bat)">
+        <node name="fake_motor_pub" pkg="rostopic" type="rostopic" args="pub -s /motor_battery iarc7_msgs/Float64Stamped &quot;{'header': auto, 'data': 21.0}&quot; -r 10" />
+    </group>
+    <!-- endif -->
 </launch>
