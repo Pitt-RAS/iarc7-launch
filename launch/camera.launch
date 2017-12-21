@@ -3,7 +3,7 @@
     <arg name="camera_name" />
     <arg name="image_width" />
     <arg name="image_height" />
-_   <arg name="image_timestamp_offset" />
+    <arg name="image_timestamp_offset" />
 
     <group ns="$(arg camera_name)">
         <node name="gscam_driver_v4l" pkg="gscam" type="gscam">
