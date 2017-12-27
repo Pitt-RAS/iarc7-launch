@@ -3,11 +3,11 @@
     <arg name="bond_id_namespace" default="safety_bonds" />
 
     <!-- if we're in the sim -->
-    <group if="$(eval arg('platform') == 'sim')" />
+    <group if="$(eval str(arg('platform')) == 'sim')" >
         <include file="$(find iarc7_simulator)/launch/morse.launch" />
     </group>
     <!-- if in V1.1 -->
-    <group if="$(eval arg('platform') == '1.1')" />
+    <group if="$(eval str(arg('platform')) == '1.1')" >
         <include file="$(find iarc7_fc_comms)/launch/fc_comms_msp.launch">
             <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
         </include>
