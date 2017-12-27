@@ -1,10 +1,10 @@
 <launch>
-    <arg name="sim" default="false" doc="true if we are running in the sim" />
+    <arg name="platform" default="sim" doc="string representing the platform" />
     <node name="invalid_task_transition_test" pkg="iarc7_abstract" type="invalid_task_transition_test.py" />
     <param name="safety_bonds/invalid_task_transition_test/form_bond" value="true" />
 
     <include file="$(find iarc7_launch)/launch/main.launch">
-        <arg name="sim" value="$(arg sim)" />
+        <arg name="platform" value="$(arg platform)" />
     </include>
 
 </launch>
