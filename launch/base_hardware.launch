@@ -54,6 +54,7 @@
     <group if="$(eval str(arg('platform')) == 'crazyflie')" >
         <include file="$(find iarc7_fc_comms)/launch/fc_comms_crazyflie.launch">
             <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="battery_topic" value="motor_battery" />
         </include>
 
         <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
@@ -62,6 +63,24 @@
         </include>
 
         <include file="$(find iarc7_launch)/launch/static_transforms_crazyflie.launch" />
+
+        <!-- a fake laser scanner for the obstacle detector -->
+        <node name="fake_laser_scan"
+            pkg="rostopic"
+            type="rostopic"
+            args="pub -s /scan sensor_msgs/LaserScan
+                    &quot;{'header': auto, header: {frame_id: 'laser'}, 'ranges': [0]}&quot;
+                    -r 1" />
+        <!-- endif -->
+
+        <!-- a fake roombas for motion coordinator -->
+        <node name="fake_roombas"
+            pkg="rostopic"
+            type="rostopic"
+            args="pub -s /roombas iarc7_msgs/OdometryArray
+                    &quot;{}&quot;
+                    -r 1" />
+        <!-- endif -->
     </group>
     <!-- endif -->
 
