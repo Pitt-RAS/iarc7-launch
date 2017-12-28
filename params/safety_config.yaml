@@ -3,6 +3,8 @@ safety_bonds:
         priority: 40
     fc_comms_msp:
         priority: 50
+    fc_comms_crazyflie:
+        priority: 50
     long_range_altimeter:
         priority: 60
     orientation_filter:
