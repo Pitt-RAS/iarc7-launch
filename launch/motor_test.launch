@@ -1,6 +1,6 @@
 <launch>
     <include file="$(find iarc7_launch)/launch/base_hardware.launch">
-        <arg name="sim" value="false" />
+        <arg name="platform" value="1.1" />
     </include>
 
     <param name="/fc_comms_msp/calibrate_accelerometer" value="false" />

@@ -12,6 +12,6 @@
 
     <include file="$(find iarc7_launch)/launch/passive_stack.launch">
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
-        <arg name="sim" value="true" />
+        <arg name="platform" value="sim" />
     </include>
 </launch>
