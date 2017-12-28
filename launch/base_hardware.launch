@@ -5,6 +5,10 @@
     <!-- if we're in the sim -->
     <group if="$(eval str(arg('platform')) == 'sim')" >
         <include file="$(find iarc7_simulator)/launch/morse.launch" />
+
+        <include file="$(find iarc7_vision)/launch/vision_node.launch">
+            <arg name="platform" value="$(arg platform)" />
+        </include>
     </group>
     <!-- if in V1.1 -->
     <group if="$(eval str(arg('platform')) == '1.1')" >
@@ -14,6 +18,12 @@
 
         <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
             <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="altimeter_name" value="lidarlite_v2" />
+        </include>
+
+        <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
+            <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="altimeter_name" value="vl53L0x" />
         </include>
 
         <include file="$(find iarc7_launch)/launch/static_transforms_1.1.launch" />
@@ -33,6 +43,25 @@
             <arg name="image_height" value="360" />
             <arg name="image_timestamp_offset" value="-0.3" />
         </include>
+
+        <include file="$(find iarc7_vision)/launch/vision_node.launch">
+            <arg name="platform" value="$(arg platform)" />
+        </include>
+    </group>
+    <!-- endif -->
+
+    <!-- if crazyflie -->
+    <group if="$(eval str(arg('platform')) == 'crazyflie')" >
+        <include file="$(find iarc7_fc_comms)/launch/fc_comms_crazyflie.launch">
+            <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+        </include>
+
+        <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
+            <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="altimeter_name" value="vl53L0x" />
+        </include>
+
+        <include file="$(find iarc7_launch)/launch/static_transforms_crazyflie.launch" />
     </group>
     <!-- endif -->
 

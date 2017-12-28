@@ -12,10 +12,6 @@
 
     <include file="$(find iarc7_sensors)/launch/obstacle_detector.launch" />
 
-    <include file="$(find iarc7_vision)/launch/vision_node.launch">
-        <arg name="platform" value="$(arg platform)" />
-    </include>
-
     <include file="$(find iarc7_sensors)/launch/roomba_transform_filter.launch"/>
 
     <!-- if we need a fake battery publisher -->
