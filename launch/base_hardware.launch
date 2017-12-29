@@ -71,7 +71,6 @@
             args="pub -s /roombas iarc7_msgs/OdometryArray
                     &quot;{}&quot;
                     -r 1" />
-        <!-- endif -->
     </group>
     <!-- endif -->
 
