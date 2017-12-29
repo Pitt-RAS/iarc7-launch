@@ -26,4 +26,8 @@
     <node name="foot4_static_pub" pkg="tf2_ros"
         type="static_transform_publisher"
         args="0.045 -0.045 0 0 0 0 /base_footprint /foot4 " />
+
+    <node name="bottom_camera_static_pub" pkg="tf2_ros"
+        type="static_transform_publisher"
+        args="0 0 0 -1.5707 0 0 /quad /bottom_camera_optical" />
 </launch>
