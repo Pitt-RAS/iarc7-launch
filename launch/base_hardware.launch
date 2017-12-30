@@ -39,6 +39,14 @@
             <arg name="image_height" value="360" />
             <arg name="image_timestamp_offset" value="-0.3" />
         </include>
+
+        <!-- a fake roomba for motion coordinator -->
+        <node name="fake_roombas"
+            pkg="rostopic"
+            type="rostopic"
+            args="pub -s /roombas iarc7_msgs/OdometryArray
+                    &quot;{}&quot;
+                    -r 1" />
     </group>
     <!-- endif -->
 
@@ -56,7 +64,7 @@
 
         <include file="$(find iarc7_launch)/launch/static_transforms_crazyflie.launch" />
 
-        <!-- a fake roombas for motion coordinator -->
+        <!-- a fake roomba for motion coordinator -->
         <node name="fake_roombas"
             pkg="rostopic"
             type="rostopic"
