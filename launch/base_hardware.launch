@@ -32,12 +32,17 @@
 
         <include file="$(find iarc7_launch)/launch/rplidar.launch" />
 
-        <include file="$(find iarc7_launch)/launch/camera.launch">
-            <arg name="device" value="/dev/v4l/by-id/usb-046d_HD_Pro_Webcam_C920_51FE20EF-video-index0" />
-            <arg name="camera_name" value="bottom_camera" />
-            <arg name="image_width" value="640" />
-            <arg name="image_height" value="360" />
-            <arg name="image_timestamp_offset" value="-0.3" />
+        <include file="$(find realsense)/launch/r200_nodelet_rgbd.launch">
+            <arg name="camera"          default="bottom_camera" />
+            <arg name="camera_type"     default="R200" />
+            <arg name="serial_no"       default="" />
+            <arg name="mode"            default="manual" />
+            <arg name="color_width"     default="640" />
+            <arg name="color_height"    default="480" />
+            <arg name="color_fps"       default="60" />
+            <arg name="depth_width"     default="480" />
+            <arg name="depth_height"    default="360" />
+            <arg name="depth_fps"       default="30" />
         </include>
 
         <!-- a fake roomba for motion coordinator -->
