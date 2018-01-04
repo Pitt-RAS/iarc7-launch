@@ -33,33 +33,33 @@
 
     <node name="bottom_camera_static_pub" pkg="tf2_ros"
         type="static_transform_publisher"
-        args="0 0 -0.04 -1.5707 0 3.1415 /quad /bottom_camera_link" />
+        args="0 0 -0.04 -1.5707 1.5707 0 /quad /bottom_camera_link" />
 
     <node name="front_left_camera_static_pub" pkg="tf2_ros"
         type="static_transform_publisher"
         args="0.0898 0.0537 -0.0083
-              -0.785 0 -1.92
+              0.785 0.349 0
               /quad
               /front_left_camera_link" />
 
     <node name="front_right_camera_static_pub" pkg="tf2_ros"
         type="static_transform_publisher"
         args="0.0537 -0.0898 -0.0083
-              -2.356 0 -1.92
+              -0.785 0.349 0
               /quad
               /front_right_camera_link" />
 
     <node name="back_left_camera_static_pub" pkg="tf2_ros"
         type="static_transform_publisher"
         args="-0.0537 0.0898 -0.0083
-              0.785 0 -1.92
+              2.356 0.349 0
               /quad
               /back_left_camera_link" />
 
     <node name="back_right_camera_static_pub" pkg="tf2_ros"
         type="static_transform_publisher"
         args="-0.0898 -0.0537 -0.0083
-              2.356 0 -1.92
+              -2.356 0.349 0
               /quad
               /back_right_camera_link" />
 </launch>
