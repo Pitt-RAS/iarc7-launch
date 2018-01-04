@@ -33,7 +33,7 @@
         <include file="$(find realsense_camera)/launch/r200_nodelet_rgbd.launch">
             <arg name="camera"          default="bottom_camera" />
             <arg name="camera_type"     default="R200" />
-            <arg name="serial_no"       default="" />
+            <arg name="serial_no"       default="1431001093" />
             <arg name="mode"            default="manual" />
             <arg name="color_width"     default="640" />
             <arg name="color_height"    default="480" />
