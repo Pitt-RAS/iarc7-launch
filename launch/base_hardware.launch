@@ -22,7 +22,11 @@
             <arg name="altimeter_name" value="vl53L0x" />
         </include>
 
-        <include file="$(find iarc7_launch)/launch/static_transforms_1.1.launch" />
+        <param name="robot_description"
+            command="$(find xacro)/xacro --inorder
+                     '$(find iarc7_launch)/robots/drone_1.1.urdf.xacro'" />
+        <node pkg="robot_state_publisher" type="robot_state_publisher"
+            name="static_tf_publisher" />
 
         <node pkg="rosserial_python" type="serial_node.py"
             name="teensy_serial">
@@ -65,7 +69,11 @@
             <arg name="altimeter_name" value="vl53L0x" />
         </include>
 
-        <include file="$(find iarc7_launch)/launch/static_transforms_crazyflie.launch" />
+        <param name="robot_description"
+            command="$(find xacro)/xacro --inorder
+                     '$(find iarc7_launch)/robots/drone_crazyflie.urdf.xacro'" />
+        <node pkg="robot_state_publisher" type="robot_state_publisher"
+            name="static_tf_publisher" />
 
         <!-- a fake roomba for motion coordinator -->
         <node name="fake_roombas"

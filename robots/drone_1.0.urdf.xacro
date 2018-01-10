@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="quivering_sky_damage">
+    <link name="quad" />
+    <link name="center_of_lift" />
+    <link name="lidarlite" />
+    <link name="short_distance_lidar" />
+    <link name="base_footprint" />
+    <link name="foot1" />
+    <link name="foot2" />
+    <link name="foot3" />
+    <link name="foot4" />
+    <link name="bottom_camera_optical" />
+    <link name="front_left_camera_optical" />
+    <link name="front_right_camera_optical" />
+    <link name="back_left_camera_optical" />
+    <link name="back_right_camera_optical" />
+
+    <joint name="quad_to_center_of_lift" type="fixed">
+        <parent link="quad" />
+        <child link="center_of_lift" />
+        <origin xyz="0 0 0.095" />
+    </joint>
+
+    <joint name="quad_to_lidarlite" type="fixed">
+        <parent link="quad" />
+        <child link="lidarlite" />
+        <origin xyz="0 -0.23 -0.02" rpy="0 ${pi/2} 0" />
+    </joint>
+
+    <joint name="quad_to_short_distance_lidar" type="fixed">
+        <parent link="quad" />
+        <child link="short_distance_lidar" />
+        <origin xyz="-0.43 0 0.0275" rpy="0 ${pi/2} 0" />
+    </joint>
+
+    <joint name="quad_to_base_footprint" type="fixed">
+        <parent link="quad" />
+        <child link="base_footprint" />
+        <origin xyz="0 0 -0.245" />
+    </joint>
+
+    <xacro:property name="foot_dist" value="0.37" />
+    <xacro:macro name="foot" params="name reflect_x reflect_y">
+        <joint name="base_footprint_to_${name}" type="fixed">
+            <parent link="base_footprint" />
+            <child link="${name}" />
+            <origin xyz="${foot_dist*reflect_x} ${foot_dist*reflect_y} 0" />
+        </joint>
+    </xacro:macro>
+
+    <xacro:foot name="foot1" reflect_x="1" reflect_y="0" />
+    <xacro:foot name="foot2" reflect_x="-1" reflect_y="0" />
+    <xacro:foot name="foot3" reflect_x="0" reflect_y="1" />
+    <xacro:foot name="foot4" reflect_x="0" reflect_y="-1" />
+
+    <joint name="quad_to_bottom_camera_optical" type="fixed">
+        <parent link="quad" />
+        <child link="bottom_camera_optical" />
+        <origin xyz="0 0 -0.21" rpy="${pi} 0 ${-pi/2}" />
+    </joint>
+
+    <xacro:property name="side_camera_x" value="0.0898" />
+    <xacro:property name="side_camera_y" value="0.0537" />
+    <xacro:macro name="side_camera" params="name rotation">
+        <joint name="quad_to_${name}_camera_optical" type="fixed">
+            <parent link="quad" />
+            <child link="${name}_camera_optical" />
+            <origin xyz="${side_camera_x*cos(rotation) - side_camera_y*sin(rotation)}
+                         ${side_camera_y*cos(rotation) + side_camera_x*sin(rotation)}
+                         -0.0083"
+                    rpy="-1.92 0 ${-pi/4 + rotation}" />
+        </joint>
+    </xacro:macro>
+
+    <xacro:side_camera name="front_left"  rotation="${0*pi/2}" />
+    <xacro:side_camera name="back_left"   rotation="${1*pi/2}" />
+    <xacro:side_camera name="back_right"  rotation="${2*pi/2}" />
+    <xacro:side_camera name="front_right" rotation="${3*pi/2}" />
+</robot>
