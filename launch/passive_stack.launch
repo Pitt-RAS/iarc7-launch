@@ -29,12 +29,10 @@
     </group>
     <!-- endif -->
 
-    <node name="landing_detector"
-        pkg="iarc7_sensors"
-        type="landing_detector.py" />
-    <param
-        name="$(arg bond_id_namespace)/landing_detector/form_bond"
-        value="true" />
+    <include file="$(find iarc7_sensors)/launch/landing_detector.launch">
+        <arg name="platform" value="$(arg platform)" />
+        <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+    </include>
 
     <include file="$(find iarc7_sensors)/launch/orientation_filter.launch">
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
