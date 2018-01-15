@@ -1,5 +1,5 @@
 safety_bonds:
-    absolute_switch_velocity_publisher:
+    landing_detector:
         priority: 40
     fc_comms_msp:
         priority: 50
