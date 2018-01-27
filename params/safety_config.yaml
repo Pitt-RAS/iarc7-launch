@@ -41,3 +41,5 @@ safety_bonds:
         priority: 1000
     high_low_speed_test_abstract:
         priority: 1000
+    test_planner_abstract: 
+        priority: 1000

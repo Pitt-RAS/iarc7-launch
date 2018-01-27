@@ -1,0 +1,10 @@
+<launch>
+    <arg name="platform" default="sim" doc="string representing the platform" />
+    <node name="test_planner_abstract" pkg="iarc7_abstract" type="test_planner.py" />
+    <param name="safety_bonds/test_planner_abstract/form_bond" value="true" />
+
+    <include file="$(find iarc7_launch)/launch/main.launch">
+        <arg name="platform" value="$(arg platform)" />
+    </include>
+
+</launch>
