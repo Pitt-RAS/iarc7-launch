@@ -1,0 +1,10 @@
+<launch>
+    <arg name="platform" default="sim" doc="string representing the platform" />
+    <node name="high_low_speed_test_abstract" pkg="iarc7_abstract" type="high_low_speed_test.py" />
+    <param name="safety_bonds/high_low_speed_test_abstract/form_bond" value="true" />
+
+    <include file="$(find iarc7_launch)/launch/main.launch">
+        <arg name="platform" value="$(arg platform)" />
+    </include>
+
+</launch>

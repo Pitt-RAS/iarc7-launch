@@ -37,3 +37,5 @@ safety_bonds:
         priority: 1000
     competition_demo_abstract:
         priority: 1000
+    high_low_speed_test_abstract:
+        priority: 1000
