@@ -19,9 +19,9 @@
         <origin xyz="0 0 0.065" />
     </joint>
 
-    <joint name="quad_to_lidarlite" type="fixed">
+    <joint name="quad_to_tfmini" type="fixed">
         <parent link="quad" />
-        <child link="lidarlite" />
+        <child link="tfmini" />
         <origin xyz="-0.115 0 -0.032" rpy="0 ${pi/2} 0" />
     </joint>
 
