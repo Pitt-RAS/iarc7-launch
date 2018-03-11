@@ -3,6 +3,9 @@
     <arg name="platform" default="sim" doc="string representing the platform" />
     <arg name="fake_bat" default="false" doc="create a fake motor battery publisher" />
 
+    <rosparam command="load"
+        file="$(find iarc7_launch)/params/arena.yaml" />
+
     <include file="$(find iarc7_launch)/launch/base_hardware.launch">
         <arg name="platform" value="$(arg platform)" />
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />

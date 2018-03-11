@@ -1,0 +1,19 @@
+<launch>
+    <arg name="platform" default="sim" doc="string representing the platform" />
+    <node name="test_planner_abstract" pkg="iarc7_abstract" type="test_planner.py" />
+    <param name="safety_bonds/test_planner_abstract/form_bond" value="true" />
+    <arg name="bond_id_namespace" default="safety_bonds" />
+    <arg name="fake_bat" default="false" doc="create a fake motor battery publisher" />
+
+    <include file="$(find iarc7_launch)/launch/passive_stack.launch">
+        <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+        <arg name="platform" value="$(arg platform)" />
+        <arg name="fake_bat" value="$(arg fake_bat)" />
+    </include>
+
+    <include file="$(find iarc7_launch)/launch/motion_stack.launch">
+        <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+        <arg name="platform" value="$(arg platform)" />
+    </include>
+
+</launch>
