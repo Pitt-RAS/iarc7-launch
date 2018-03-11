@@ -1,4 +1,4 @@
-# absolute max arena specific constraints
+# min and max arena specific constraints
 arena:
     max_x: 10.0 # meters
     max_y: 10.0 # meters
