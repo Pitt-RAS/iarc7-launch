@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="天雷">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="greased_lightning">
     <link name="quad" />
     <link name="center_of_lift" />
-    <link name="lidarlite" />
+    <link name="tfmini" />
     <link name="short_distance_lidar" />
     <link name="base_footprint" />
     <link name="foot1" />
@@ -25,7 +25,7 @@
         <origin xyz="-0.115 0 -0.032" rpy="0 ${pi/2} 0" />
     </joint>
 
- <joint name="quad_to_short_distance_lidar" type="fixed">
+    <joint name="quad_to_short_distance_lidar" type="fixed">
         <parent link="quad" />
         <child link="short_distance_lidar" />
         <origin xyz="0.08 -0.032 -0.035" rpy="0 ${pi/2} 0" />
