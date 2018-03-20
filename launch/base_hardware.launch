@@ -30,8 +30,6 @@
             <arg name="altimeter_name" value="vl53L0x" />
         </include>
 
-        <include file="$(find iarc7_sensors)/launch/nano_subscriber.launch" />
-
         <param name="robot_description"
             command="$(find xacro)/xacro --inorder
                      '$(find iarc7_launch)/robots/drone_1.1.urdf.xacro'" />
@@ -90,10 +88,13 @@
             name="static_tf_publisher" />
 
         <node pkg="rosserial_python" type="serial_node.py"
-            name="teensy_serial">
-            <param name="port" value="/dev/ttyACM0" />
-            <param name="baud" value="115200" />
+            name="nano_serial">
+            <param name="port" value="/dev/ttyUSB0" />
+            <param name="baud" value="57600" />
         </node>
+
+
+        <include file="$(find iarc7_sensors)/launch/nano_subscriber.launch" />
 
         <!-- a fake roomba for motion coordinator -->
         <node name="fake_roombas"
