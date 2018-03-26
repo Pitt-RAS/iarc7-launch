@@ -18,6 +18,7 @@
     <group if="$(eval str(arg('platform')) == '1.1')" >
         <include file="$(find iarc7_fc_comms)/launch/fc_comms_msp.launch">
             <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="platform" value="$(arg platform)" />
         </include>
 
         <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
@@ -69,6 +70,7 @@
     <group if="$(eval str(arg('platform')) == '1.5')" >
         <include file="$(find iarc7_fc_comms)/launch/fc_comms_msp.launch">
             <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="platform" value="$(arg platform)" />
         </include>
 
         <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
