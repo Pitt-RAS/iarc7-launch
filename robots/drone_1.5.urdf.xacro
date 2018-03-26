@@ -9,9 +9,7 @@
     <link name="foot2" />
     <link name="foot3" />
     <link name="foot4" />
-    <!--
-    <link name="bottom_camera_link" />
-    -->
+    <link name="pmw3901_optical_flow" />
 
     <joint name="quad_to_center_of_lift" type="fixed">
         <parent link="quad" />
@@ -52,11 +50,9 @@
     <xacro:foot name="foot3" reflect_x="-1" reflect_y="-1" />
     <xacro:foot name="foot4" reflect_x="1" reflect_y="-1" />
 
-    <!--
     <joint name="quad_to_bottom_camera_link" type="fixed">
         <parent link="quad" />
-        <child link="bottom_camera_link" />
+        <child link="pmw3901_optical_flow" />
         <origin xyz="0 0 0" rpy="0 ${pi/2} 0" />
     </joint>
-    -->
 </robot>
