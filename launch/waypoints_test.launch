@@ -1,17 +1,18 @@
 <launch>
     <arg name="bond_id_namespace" default="safety_bonds" />
+    <arg name="platform" default="sim" doc="string representing the platform" />
 
     <node name="waypoints_test" pkg="iarc7_motion" type="waypoints_test.py" />
     <param name="$(arg bond_id_namespace)/motion_command_coordinator/form_bond"
         value="true" />
 
     <include file="$(find iarc7_motion)/launch/low_level_motion.launch">
-        <arg name="platform" value="sim" />
+        <arg name="platform" value="$(arg platform)" />
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
 
     <include file="$(find iarc7_launch)/launch/passive_stack.launch">
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
-        <arg name="platform" value="sim" />
+        <arg name="platform" value="$(arg platform)" />
     </include>
 </launch>
