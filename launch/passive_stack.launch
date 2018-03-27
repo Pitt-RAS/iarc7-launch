@@ -11,11 +11,13 @@
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
 
-    <include file="$(find iarc7_launch)/launch/localization.launch" />
+    <include  file="$(find iarc7_launch)/launch/localization.launch" />
 
-    <include file="$(find iarc7_sensors)/launch/obstacle_detector.launch" />
+    <include if="$(eval str(arg('platform')) != '1.5')"
+             file="$(find iarc7_sensors)/launch/obstacle_detector.launch" />
 
-    <include file="$(find iarc7_vision)/launch/vision_node.launch">
+    <include if="$(eval str(arg('platform')) != '1.5' and str(arg('platform')) != 'sim_1.5')"
+             file="$(find iarc7_vision)/launch/vision_node.launch">
         <arg name="platform" value="$(arg platform)" />
     </include>
 
@@ -37,7 +39,8 @@
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
 
-    <include file="$(find iarc7_sensors)/launch/orientation_filter.launch">
+    <include if="$(eval str(arg('platform')) != '1.5')"
+             file="$(find iarc7_sensors)/launch/orientation_filter.launch">
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
 </launch>

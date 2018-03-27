@@ -2,14 +2,23 @@
     <arg name="platform" default="sim" doc="string representing the platform" />
     <arg name="bond_id_namespace" default="safety_bonds" />
 
-    <!-- if we're in the sim -->
+    <!-- if we're in the original sim -->
     <group if="$(eval str(arg('platform')) == 'sim')" >
-        <include file="$(find iarc7_simulator)/launch/morse.launch" />
+        <include file="$(find iarc7_simulator)/launch/morse.launch">
+            <arg name="platform" value="$(arg platform)" />
+        </include>
+    </group>
+    <!-- if we're in the v1.5 sim -->
+    <group if="$(eval str(arg('platform')) == 'sim_1.5')" >
+        <include file="$(find iarc7_simulator)/launch/morse.launch">
+            <arg name="platform" value="$(arg platform)" />
+        </include>
     </group>
     <!-- if in V1.1 -->
     <group if="$(eval str(arg('platform')) == '1.1')" >
         <include file="$(find iarc7_fc_comms)/launch/fc_comms_msp.launch">
             <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="platform" value="$(arg platform)" />
         </include>
 
         <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
@@ -57,7 +66,47 @@
                     -r 1" />
     </group>
     <!-- endif -->
+    <!-- if in V1.5 -->
+    <group if="$(eval str(arg('platform')) == '1.5')" >
+        <include file="$(find iarc7_fc_comms)/launch/fc_comms_msp.launch">
+            <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="platform" value="$(arg platform)" />
+        </include>
 
+        <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
+            <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="altimeter_name" value="tfmini" />
+        </include>
+
+        <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
+            <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="altimeter_name" value="vl53L0x" />
+        </include>
+
+        <param name="robot_description"
+            command="$(find xacro)/xacro --inorder
+                     '$(find iarc7_launch)/robots/drone_1.5.urdf.xacro'" />
+        <node pkg="robot_state_publisher" type="robot_state_publisher"
+            name="static_tf_publisher" />
+
+        <node pkg="rosserial_python" type="serial_node.py"
+            name="nano_serial">
+            <param name="port" value="/dev/ttyUSB0" />
+            <param name="baud" value="115200" />
+        </node>
+
+
+        <include file="$(find iarc7_sensors)/launch/nano_subscriber.launch" />
+
+        <!-- a fake roomba for motion coordinator -->
+        <node name="fake_roombas"
+            pkg="rostopic"
+            type="rostopic"
+            args="pub -s /roombas iarc7_msgs/OdometryArray
+                    &quot;{}&quot;
+                    -r 1" />
+    </group>
+    <!-- endif -->
     <!-- if crazyflie -->
     <group if="$(eval str(arg('platform')) == 'crazyflie')" >
         <include file="$(find iarc7_fc_comms)/launch/fc_comms_crazyflie.launch">
