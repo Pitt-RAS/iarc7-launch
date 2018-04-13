@@ -95,6 +95,11 @@
             <param name="baud" value="115200" />
         </node>
 
+        <node pkg="joy" type="joy_node" name="joy_node">
+            <param name="deadzone" value="0.1" />
+            <param name="autorepeat_rate" value="50" />
+            <param name="coalesce_interval" value="0.02" />
+        </node>
 
         <include file="$(find iarc7_sensors)/launch/nano_subscriber.launch" />
 
