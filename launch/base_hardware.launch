@@ -103,6 +103,8 @@
 
         <include file="$(find iarc7_sensors)/launch/nano_subscriber.launch" />
 
+        <include file="$(find iarc7_sensors)/launch/flow_transformer.launch" />
+
         <!-- a fake roomba for motion coordinator -->
         <node name="fake_roombas"
             pkg="rostopic"
