@@ -1,5 +1,5 @@
 # The frequency, in Hz, at which the filter will output a position estimate
-frequency: 30
+frequency: 100
 
 # Enable fusing of old data after newer data is received
 smooth_lagged_data: true
