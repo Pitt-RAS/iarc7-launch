@@ -1,0 +1,10 @@
+<launch>
+    <arg name="platform" default="sim" doc="string representing the platform" />
+    <node name="joystick_velocity_test_abstract" pkg="iarc7_abstract" type="joystick_velocity_test.py" />
+    <param name="safety_bonds/joystick_velocity_test_abstract/form_bond" value="true" />
+
+    <include file="$(find iarc7_launch)/launch/main.launch">
+        <arg name="platform" value="$(arg platform)" />
+    </include>
+
+</launch>
