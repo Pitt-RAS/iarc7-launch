@@ -7,4 +7,12 @@
         <arg name="platform" value="$(arg platform)" />
     </include>
 
+    <node pkg="joy" type="joy_node" name="joy_node_motion">
+        <param name="dev" value="/dev/input/js1" />
+        <param name="deadzone" value="0.1" />
+        <param name="autorepeat_rate" value="50" />
+        <param name="coalesce_interval" value="0.02" />
+        <remap from="joy" to="motion_joy" />
+    </node>
+
 </launch>
