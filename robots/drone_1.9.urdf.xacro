@@ -10,7 +10,7 @@
     <link name="foot3" />
     <link name="foot4" />
     <link name="pmw3901_optical_flow" />
-    <link name="pmw3901_optical_flow_optical" />     
+    <link name="pmw3901_optical_flow_optical" />
 
     <joint name="quad_to_center_of_lift" type="fixed">
         <parent link="quad" />
@@ -21,23 +21,22 @@
     <joint name="quad_to_tfmini" type="fixed">
         <parent link="quad" />
         <child link="tfmini" />
-        <origin xyz="-0.015 0.0925 -0.055" rpy="0 ${pi/2} 0" />
+        <origin xyz="0.14 -0.14 -0.05" rpy="0 ${pi/2} 0" />
     </joint>
 
     <joint name="quad_to_short_distance_lidar" type="fixed">
         <parent link="quad" />
         <child link="short_distance_lidar" />
-        <origin xyz="0.07 0.0925 -0.040" rpy="0 ${pi/2} 0" />
+        <origin xyz="-0.12 0.12 -0.04" rpy="0 ${pi/2} 0" />
     </joint>
-
 
     <joint name="quad_to_base_footprint" type="fixed">
         <parent link="quad" />
         <child link="base_footprint" />
-        <origin xyz="0 0 -0.08" />
+        <origin xyz="0 0 -0.13" />
     </joint>
 
-    <xacro:property name="foot_dist" value="0.1415" />
+    <xacro:property name="foot_dist" value="0.155" />
     <xacro:macro name="foot" params="name reflect_x reflect_y">
         <joint name="base_footprint_to_${name}" type="fixed">
             <parent link="base_footprint" />
@@ -54,7 +53,7 @@
     <joint name="quad_to_bottom_camera_link" type="fixed">
         <parent link="quad" />
         <child link="pmw3901_optical_flow" />
-        <origin xyz="0 0 0" rpy="0 ${pi/2} 0" />
+        <origin xyz="-0.14 -0.14 -0.04" rpy="0 ${pi/2} ${-3*pi/4}" />
     </joint>
 
 

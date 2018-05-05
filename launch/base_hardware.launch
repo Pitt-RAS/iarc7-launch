@@ -66,8 +66,8 @@
                     -r 1" />
     </group>
     <!-- endif -->
-    <!-- if in V1.5 -->
-    <group if="$(eval str(arg('platform')) == '1.5')" >
+    <!-- if in V1.9 -->
+    <group if="$(eval str(arg('platform')) == '1.9')" >
         <include file="$(find iarc7_fc_comms)/launch/fc_comms_msp.launch">
             <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
             <arg name="platform" value="$(arg platform)" />
@@ -85,7 +85,7 @@
 
         <param name="robot_description"
             command="$(find xacro)/xacro --inorder
-                     '$(find iarc7_launch)/robots/drone_1.5.urdf.xacro'" />
+                     '$(find iarc7_launch)/robots/drone_1.9.urdf.xacro'" />
         <node pkg="robot_state_publisher" type="robot_state_publisher"
             name="static_tf_publisher" />
 
@@ -93,12 +93,6 @@
             name="nano_serial">
             <param name="port" value="/dev/ttyUSB0" />
             <param name="baud" value="115200" />
-        </node>
-
-        <node pkg="joy" type="joy_node" name="joy_node">
-            <param name="deadzone" value="0.1" />
-            <param name="autorepeat_rate" value="50" />
-            <param name="coalesce_interval" value="0.02" />
         </node>
 
         <include file="$(find iarc7_sensors)/launch/nano_subscriber.launch" />
