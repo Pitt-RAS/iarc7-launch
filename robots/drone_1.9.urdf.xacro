@@ -9,6 +9,7 @@
     <link name="foot2" />
     <link name="foot3" />
     <link name="foot4" />
+    <link name="bottom_camera_link" />
     <link name="pmw3901_optical_flow" />
     <link name="pmw3901_optical_flow_optical" />
 
@@ -56,12 +57,11 @@
         <origin xyz="-0.1 0 -0.04" rpy="0 ${pi/2} ${pi}" />
     </joint>
 
-    <joint name="quad_to_bottom_camera_link" type="fixed">
+    <joint name="quad_to_pmw3901_optical_flow" type="fixed">
         <parent link="quad" />
         <child link="pmw3901_optical_flow" />
         <origin xyz="-0.14 -0.14 -0.04" rpy="0 ${pi/2} ${-3*pi/4}" />
     </joint>
-
 
     <joint name="bottom_camera_link_to_optical" type="fixed">
         <parent link="pmw3901_optical_flow" />
