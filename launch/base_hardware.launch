@@ -67,7 +67,7 @@
     </group>
     <!-- endif -->
     <!-- if in V1.9 -->
-    <group if="$(eval str(arg('platform')) == '1.9)" >
+    <group if="$(eval str(arg('platform')) == '1.9')" >
         <include file="$(find iarc7_fc_comms)/launch/fc_comms_msp.launch">
             <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
             <arg name="platform" value="$(arg platform)" />
