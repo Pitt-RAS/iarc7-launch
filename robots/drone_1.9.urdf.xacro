@@ -52,6 +52,12 @@
 
     <joint name="quad_to_bottom_camera_link" type="fixed">
         <parent link="quad" />
+        <child link="bottom_camera_link" />
+        <origin xyz="-0.1 0 -0.04" rpy="0 ${pi/2} ${pi}" />
+    </joint>
+
+    <joint name="quad_to_bottom_camera_link" type="fixed">
+        <parent link="quad" />
         <child link="pmw3901_optical_flow" />
         <origin xyz="-0.14 -0.14 -0.04" rpy="0 ${pi/2} ${-3*pi/4}" />
     </joint>
