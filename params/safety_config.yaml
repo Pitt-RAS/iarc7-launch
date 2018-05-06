@@ -45,3 +45,5 @@ safety_bonds:
         priority: 1000
     joystick_velocity_test_abstract:
         priority: 1000
+    go_to_roomba_abstract: 
+        priority: 1000
