@@ -43,4 +43,10 @@
              file="$(find iarc7_sensors)/launch/orientation_filter.launch">
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
+    
+    <include file="$(find iarc7_sensors)/launch/roomba_state_estimator.launch">
+        <arg name="platform" value="$(arg platform)" />
+        <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+    </include>
+    
 </launch>

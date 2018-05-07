@@ -17,6 +17,8 @@ safety_bonds:
         priority: 250
     motion_planner: 
         priority: 300
+    roomba_state_estimator: 
+        priority: 500
     takeoff_land_abstract:
         priority: 1000
     motors_test:
