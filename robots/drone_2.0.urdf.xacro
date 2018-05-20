@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="greased_lightning">
     <link name="quad" />
     <link name="center_of_lift" />
-    <link name="tfmini" />
+    <link name="lidarlite" />
     <link name="short_distance_lidar" />
     <link name="base_footprint" />
     <link name="foot1" />
@@ -10,34 +10,32 @@
     <link name="foot3" />
     <link name="foot4" />
     <link name="bottom_camera_link" />
-    <link name="pmw3901_optical_flow" />
-    <link name="pmw3901_optical_flow_optical" />
 
     <joint name="quad_to_center_of_lift" type="fixed">
         <parent link="quad" />
         <child link="center_of_lift" />
-        <origin xyz="0 0 0.055" />
+        <origin xyz="0 0 0.06" />
     </joint>
 
-    <joint name="quad_to_tfmini" type="fixed">
+    <joint name="quad_to_lidarlite" type="fixed">
         <parent link="quad" />
-        <child link="tfmini" />
-        <origin xyz="0.14 -0.14 -0.05" rpy="0 ${pi/2} 0" />
+        <child link="lidarlite" />
+        <origin xyz="-0.163 0.163 0.02" rpy="0 ${pi/2} 0" />
     </joint>
 
     <joint name="quad_to_short_distance_lidar" type="fixed">
         <parent link="quad" />
         <child link="short_distance_lidar" />
-        <origin xyz="-0.12 0.12 -0.04" rpy="0 ${pi/2} 0" />
+        <origin xyz="0.304 0.304 -0.043" rpy="0 ${pi/2} 0" />
     </joint>
 
     <joint name="quad_to_base_footprint" type="fixed">
         <parent link="quad" />
         <child link="base_footprint" />
-        <origin xyz="0 0 -0.13" />
+        <origin xyz="0 0 -0.10" />
     </joint>
 
-    <xacro:property name="foot_dist" value="0.155" />
+    <xacro:property name="foot_dist" value="0.233" />
     <xacro:macro name="foot" params="name reflect_x reflect_y">
         <joint name="base_footprint_to_${name}" type="fixed">
             <parent link="base_footprint" />
@@ -54,18 +52,7 @@
     <joint name="quad_to_bottom_camera_link" type="fixed">
         <parent link="quad" />
         <child link="bottom_camera_link" />
-        <origin xyz="-0.1 0 -0.04" rpy="0 ${pi/2} ${pi}" />
+        <origin xyz="0 0 -0.065" rpy="0 ${pi/2} 0" />
     </joint>
 
-    <joint name="quad_to_pmw3901_optical_flow" type="fixed">
-        <parent link="quad" />
-        <child link="pmw3901_optical_flow" />
-        <origin xyz="-0.14 -0.14 -0.04" rpy="0 ${pi/2} ${-3*pi/4}" />
-    </joint>
-
-    <joint name="bottom_camera_link_to_optical" type="fixed">
-        <parent link="pmw3901_optical_flow" />
-        <child link="pmw3901_optical_flow_optical" />
-        <origin xyz="0 0 0" rpy="-${pi/2} 0 -${pi/2}" />
-    </joint>
 </robot>
