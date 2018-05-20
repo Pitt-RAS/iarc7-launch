@@ -44,6 +44,4 @@
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
 
-    <node pkg="iarc7_sensors" type="simple_roomba_filter.py"
-        name="simple_roomba_filter" />
 </launch>
