@@ -122,6 +122,58 @@
                     -r 1" />
     </group>
     <!-- endif -->
+    <!-- if in V2.0 -->
+    <group if="$(eval str(arg('platform')) == '2.0')" >
+        <include file="$(find iarc7_fc_comms)/launch/fc_comms_msp.launch">
+            <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="platform" value="$(arg platform)" />
+        </include>
+
+        <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
+            <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="altimeter_name" value="lidarlite_v2" />
+        </include>
+
+        <include file="$(find iarc7_sensors)/launch/altimeter.launch" >
+            <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
+            <arg name="altimeter_name" value="vl53L0x" />
+        </include>
+
+        <param name="robot_description"
+            command="$(find xacro)/xacro --inorder
+                     '$(find iarc7_launch)/robots/drone_$(arg platform).urdf.xacro'" />
+        <node pkg="robot_state_publisher" type="robot_state_publisher"
+            name="static_tf_publisher" />
+
+        <node pkg="rosserial_python" type="serial_node.py"
+            name="teensy_serial">
+            <param name="port" value="/dev/ttyS0" />
+            <param name="baud" value="115200" />
+        </node>
+
+        <include file="$(find realsense_camera)/launch/r200_nodelet_rgbd.launch">
+            <arg name="camera"          default="bottom_camera" />
+            <arg name="camera_type"     default="R200" />
+            <arg name="serial_no"       default="2461020455" />
+            <arg name="image_timestamp_offset" default="-0.075" />
+            <arg name="mode"            default="manual" />
+            <arg name="color_width"     default="640" />
+            <arg name="color_height"    default="480" />
+            <arg name="color_fps"       default="30" />
+            <arg name="depth_width"     default="480" />
+            <arg name="depth_height"    default="360" />
+            <arg name="depth_fps"       default="30" />
+        </include>
+
+        <!-- a fake roomba for motion coordinator -->
+        <node name="fake_roombas"
+            pkg="rostopic"
+            type="rostopic"
+            args="pub -s /roombas iarc7_msgs/OdometryArray
+                    &quot;{}&quot;
+                    -r 1" />
+    </group>
+    <!-- endif -->
     <!-- if crazyflie -->
     <group if="$(eval str(arg('platform')) == 'crazyflie')" >
         <include file="$(find iarc7_fc_comms)/launch/fc_comms_crazyflie.launch">

@@ -13,7 +13,7 @@
 
     <include  file="$(find iarc7_launch)/launch/localization.launch" />
 
-    <include if="$(eval str(arg('platform')) != '1.9')"
+    <include if="$(eval str(arg('platform')) not in ('1.9', '2.0'))"
              file="$(find iarc7_sensors)/launch/obstacle_detector.launch" />
 
     <include if="$(eval str(arg('platform')) != 'sim_1.5')"
@@ -39,8 +39,11 @@
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
 
-    <include if="$(eval str(arg('platform')) != '1.9')"
+    <include if="$(eval str(arg('platform')) not in ('1.9', '2.0'))"
              file="$(find iarc7_sensors)/launch/orientation_filter.launch">
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
+
+    <node pkg="iarc7_sensors" type="simple_roomba_filter.py"
+        name="simple_roomba_filter" />
 </launch>
