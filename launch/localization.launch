@@ -1,4 +1,5 @@
 <launch>
+    <rosparam command="delete" param="/robot_localization" />
     <node name="robot_localization"
           pkg="robot_localization"
           type="ekf_localization_node">
