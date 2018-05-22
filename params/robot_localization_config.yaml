@@ -163,6 +163,7 @@ twist1_config: [false, false, false,
                 false, false, false,
                 false, false, false]
 twist1_queue_size: 3
+twist1_rejection_threshold: 3
 twist1_nodelay: false
 
 twist2: flow_transformer/twist
