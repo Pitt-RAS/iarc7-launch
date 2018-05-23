@@ -26,7 +26,7 @@
     <joint name="quad_to_short_distance_lidar" type="fixed">
         <parent link="quad" />
         <child link="short_distance_lidar" />
-        <origin xyz="0.304 0.304 -0.043" rpy="0 ${pi/2} 0" />
+        <origin xyz="0.25 0.33-0.043" rpy="0 ${pi/2} 0" />
     </joint>
 
     <joint name="quad_to_base_footprint" type="fixed">
