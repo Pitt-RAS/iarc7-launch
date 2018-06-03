@@ -13,8 +13,9 @@
 
     <include  file="$(find iarc7_launch)/launch/localization.launch" />
 
-    <include if="$(eval str(arg('platform')) not in ('1.9', '2.0'))"
-             file="$(find iarc7_sensors)/launch/obstacle_detector.launch" />
+    <include file="$(find iarc7_sensors)/launch/obstacle_detector.launch">
+        <arg name="platform" value="$(arg platform)" />
+    </include>
 
     <include if="$(eval str(arg('platform')) != 'sim_1.5')"
              file="$(find iarc7_vision)/launch/vision_node.launch">
