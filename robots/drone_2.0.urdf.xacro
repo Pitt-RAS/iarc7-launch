@@ -26,13 +26,13 @@
     <joint name="quad_to_short_distance_lidar" type="fixed">
         <parent link="quad" />
         <child link="short_distance_lidar" />
-        <origin xyz="0.25 0.33-0.043" rpy="0 ${pi/2} 0" />
+        <origin xyz="0.25 0.33 -0.043" rpy="0 ${pi/2} 0" />
     </joint>
 
     <joint name="quad_to_base_footprint" type="fixed">
         <parent link="quad" />
         <child link="base_footprint" />
-        <origin xyz="0 0 -0.10" />
+        <origin xyz="0 0 -0.215" />
     </joint>
 
     <xacro:property name="foot_dist" value="0.233" />
@@ -52,7 +52,7 @@
     <joint name="quad_to_bottom_camera_link" type="fixed">
         <parent link="quad" />
         <child link="bottom_camera_link" />
-        <origin xyz="0 0 -0.065" rpy="0 ${pi/2} 0" />
+        <origin xyz="0 -0.0508 -0.065" rpy="0 ${pi/2} 0" />
     </joint>
 
 </robot>
