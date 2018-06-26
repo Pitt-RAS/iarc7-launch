@@ -120,7 +120,6 @@ pose0_config: [false, false, true,
 pose0_differential: false
 pose0_relative: false
 pose0_queue_size: 500
-pose0_rejection_threshold: 5
 pose0_nodelay: false
 
 pose1: short_distance_lidar_pose
@@ -132,7 +131,6 @@ pose1_config: [false, false, true,
 pose1_differential: false
 pose1_relative: false
 pose1_queue_size: 500
-pose1_rejection_threshold: 5
 pose1_nodelay: false
 
 pose2: camera_localized_pose
