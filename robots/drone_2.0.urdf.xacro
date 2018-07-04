@@ -10,6 +10,7 @@
     <link name="foot3" />
     <link name="foot4" />
     <link name="bottom_camera_link" />
+    <link name="bottom_camera_rgb_optical_frame" />
 
     <joint name="quad_to_center_of_lift" type="fixed">
         <parent link="quad" />
@@ -52,7 +53,14 @@
     <joint name="quad_to_bottom_camera_link" type="fixed">
         <parent link="quad" />
         <child link="bottom_camera_link" />
-        <origin xyz="0 -0.0508 -0.065" rpy="0 ${pi/2} 0" />
+        <origin xyz="0 0.07 -0.09" rpy="0 ${pi/2} -${pi/2}" />
+    </joint>
+
+    <joint name="bottom_camera_link_to_bottom_camera_rgb_optical_frame"
+        type="fixed">
+        <parent link="bottom_camera_link" />
+        <child link="bottom_camera_rgb_optical_frame" />
+        <origin rpy="-${pi/2} 0 -${pi/2}" />
     </joint>
 
 </robot>
