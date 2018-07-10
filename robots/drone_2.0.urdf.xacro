@@ -63,4 +63,16 @@
         <origin rpy="-${pi/2} 0 -${pi/2}" />
     </joint>
 
+    <joint name="quad_to_forward_camera_link" type="fixed">
+        <parent link="quad" />
+        <child link="forward_camera_link" />
+        <origin xyz="0.1 0 -0.04" rpy="0 0 0" />
+    </joint>
+
+    <joint name="forward_camera_link_to_optical" type="fixed">
+        <parent link="forward_camera_link" />
+        <child link="forward_camera_optical" />
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 0" />
+        
+    </joint>
 </robot>
