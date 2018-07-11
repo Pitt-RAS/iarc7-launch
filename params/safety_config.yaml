@@ -7,8 +7,6 @@ safety_bonds:
         priority: 50
     long_range_altimeter:
         priority: 60
-    leopard_imaging_camera:
-        priority: 70
     vision_node:
         priority: 80
     orientation_filter:

@@ -150,10 +150,6 @@
             <param name="port" value="/dev/ttyS0" />
             <param name="baud" value="115200" />
         </node>
-
-        <include file="$(find iarc7_sensors)/launch/leopard_imaging_camera.launch">
-            <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
-        </include>
     </group>
     <!-- endif -->
     <!-- if crazyflie -->
