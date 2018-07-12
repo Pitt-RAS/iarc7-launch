@@ -72,7 +72,7 @@
     <joint name="forward_camera_link_to_optical" type="fixed">
         <parent link="forward_camera_link" />
         <child link="forward_camera_optical" />
-        <origin xyz="0 0 0" rpy="${-pi/2} 0 0" />
-        
+        <origin xyz="0.2 -0.02 0" rpy="${-pi/2} 0 0" />
+
     </joint>
 </robot>
