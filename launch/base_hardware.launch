@@ -150,21 +150,6 @@
             <param name="port" value="/dev/ttyS0" />
             <param name="baud" value="115200" />
         </node>
-
-        <include file="$(find realsense_camera)/launch/r200_nodelet_rgbd.launch">
-            <arg name="camera"          default="forward_camera" />
-            <arg name="camera_type"     default="R200" />
-            <arg name="serial_no"       default="1521000211" />
-            <arg name="image_timestamp_offset" default="-0.075" />
-            <arg name="mode"            default="manual" />
-            <arg name="color_width"     default="1920" />
-            <arg name="color_height"    default="1080" />
-            <arg name="color_fps"       default="15" />
-            <arg name="depth_width"     default="480" />
-            <arg name="depth_height"    default="360" />
-            <arg name="depth_fps"       default="30" />
-        </include>
-
     </group>
     <!-- endif -->
     <!-- if crazyflie -->
