@@ -1,0 +1,13 @@
+<launch>
+    <arg name="platform" default="sim" doc="string representing the platform" />
+    <node name="wall_bounce_abstract" pkg="iarc7_abstract" type="wall_bounce.py">
+        <rosparam command="load"
+            file="$(find iarc7_abstract)/param/arena_settings_10m.yaml" />
+    </node>
+    <param name="safety_bonds/wall_bounce_abstract/form_bond" value="true" />
+
+    <include file="$(find iarc7_launch)/launch/main.launch">
+        <arg name="platform" value="$(arg platform)" />
+    </include>
+
+</launch>
