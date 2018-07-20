@@ -67,8 +67,8 @@
         <origin rpy="-${pi/2} 0 -${pi/2}" />
     </joint>
 
-    <xacro:property name="camera_z" value="-0.04" />
-    <xacro:property name="camera_horiz_offset" value="0.15" />
+    <xacro:property name="camera_z" value="-0.13" />
+    <xacro:property name="camera_horiz_offset" value="0.20" />
     <xacro:macro name="side_camera" params="name pitch yaw">
         <joint name="quad_to_${name}_camera_link" type="fixed">
             <parent link="quad" />
