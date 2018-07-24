@@ -6,7 +6,7 @@
         address="10.0.0.1"
         user="iarc7"
         password="ubuntu"
-        env-loader="/home/iarc7/env_loader.sh"
+        env-loader="/home/iarc7/env_loader.sh" 
         default="true" />
 
     <!--<include file="$(find iarc7_vision_cnn)/launch/darkflow_ros.launch" />-->
@@ -16,4 +16,9 @@
     </include>
 
     <node name="obstacle_filter" pkg="iarc7_sensors" type="obstacle_filter.py" />
+
+    <machine
+        name="local"
+        address="localhost"
+        default="true" />
 </launch>
