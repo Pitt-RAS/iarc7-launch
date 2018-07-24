@@ -1,4 +1,14 @@
 <launch>
+    <arg name="platform" />
+
+    <machine
+        name="nuc"
+        address="10.0.0.1"
+        user="iarc7"
+        password="ubuntu"
+        env-loader="/home/iarc7/env_loader.sh"
+        default="true" />
+
     <!--<include file="$(find iarc7_vision_cnn)/launch/darkflow_ros.launch" />-->
 
     <include file="$(find iarc7_sensors)/launch/obstacle_detector.launch">
