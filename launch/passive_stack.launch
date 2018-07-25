@@ -13,7 +13,7 @@
 
     <include  file="$(find iarc7_launch)/launch/localization.launch" />
 
-    <include file="$(find iarc7_sensors)/launch/obstacle_detector.launch">
+    <include file="$(find iarc7_launch)/launch/nuc_sensors.launch">
         <arg name="platform" value="$(arg platform)" />
     </include>
 
