@@ -5,40 +5,196 @@
 
     <!-- if sim -->
     <group if="$(eval str(arg('platform')) in ('sim'))">
+        <!-- a small list of topics are included here as sim users will want to tailor this -->
         <node pkg="rosbag" type="record" name="rosbag_mission_7"
            args="record -o $(arg bagpath)/mission7_bags_$(arg platform)/$(arg bagname)
                            /roomba_detections
                            /obstacle_detections
-                           /fc_imu
                            /odometry/filtered
                            /uav_commands
                            /cmd_motion_point
                            /roombas
                            /obstacles
                            /tf
-                           /tf_static
-                           /motor_battery" />
+                           /tf_static" />
     </group>
 
     <!-- if 2.0 -->
     <!-- Todo add all sensor topics and such -->
     <group if="$(eval str(arg('platform')) in ('2.0'))">
-        <node pkg="rosbag" type="record" name="rosbag_mission_7"
-           args="record -o /mnt/mission7_bags_$(arg platform)/$(arg bagname)
-                           /roomba_detections
-                           /obstacle_detections
-                           /fc_imu
-                           /odometry/filtered
-                           /uav_commands
-                           /cmd_motion_point
-                           /roombas
-                           /obstacles
-                           /tf
-                           /tf_static
-                           /motor_battery
-                           /corrected_image
-                           /floor_detector/detections_image
-                           /optical_flow_estimator/twist" />
+
+
+        <machine
+            name="nuc"
+            address="10.0.0.1"
+            user="iarc7"
+            password="ubuntu"
+            env-loader="/home/iarc7/env_loader.sh"
+            default="true" />
+
+            <!-- comments are not allowed in open tags, put commented out topics here -->
+            <!-- begin commented out topics
+                /back_camera/color/image_raw
+                /back_camera/depth/camera_info
+                /back_camera/depth/image_rect_raw
+                /back_camera/extrinsics/depth_to_color
+                /back_camera/extrinsics/depth_to_infra1
+                /back_camera/extrinsics/depth_to_infra2
+                /back_camera/infra1/camera_info
+                /back_camera/infra1/image_rect_raw
+                /back_camera/infra2/camera_info
+                /back_camera/infra2/image_rect_raw
+                /back_camera/realsense2_camera_manager/bond
+                /back_camera/realsense2_camera_manager/parameter_descriptions
+                /back_camera/realsense2_camera_manager/parameter_updates
+                /back_obstacle_detector/clustering_pointcloud
+                /bond_topic
+                /bottom_camera/rgb/image_raw
+                /bottom_camera_throttled/rgb/image_raw
+                /corrected_image
+                /front_camera/color/image_raw
+                /front_camera/depth/camera_info
+                /front_camera/depth/image_rect_raw
+                /front_camera/extrinsics/depth_to_color
+                /front_camera/extrinsics/depth_to_infra1
+                /front_camera/extrinsics/depth_to_infra2
+                /front_camera/infra1/camera_info
+                /front_camera/infra1/image_rect_raw
+                /front_camera/infra2/camera_info
+                /front_camera/infra2/image_rect_raw
+                /front_camera/realsense2_camera_manager/bond
+                /front_camera/realsense2_camera_manager/parameter_descriptions
+                /front_camera/realsense2_camera_manager/parameter_updates -->
+                /front_obstacle_detector/clustering_pointcloud
+                /iarc7_vision_node/parameter_descriptions
+                /iarc7_vision_node/parameter_updates
+                /iarc7_vision_node/roomba_estimator/parameter_descriptions
+                /iarc7_vision_node/roomba_estimator/parameter_updates
+                /left_camera/color/camera_info
+                /left_camera/color/image_raw
+                /left_camera/depth/camera_info
+                /left_camera/depth/image_rect_raw
+                /left_camera/extrinsics/depth_to_color
+                /left_camera/extrinsics/depth_to_infra1
+                /left_camera/extrinsics/depth_to_infra2
+                /left_camera/infra1/camera_info
+                /left_camera/infra1/image_rect_raw
+                /left_camera/infra2/camera_info
+                /left_camera/infra2/image_rect_raw
+                /left_camera/realsense2_camera_manager/bond
+                /left_camera/realsense2_camera_manager/parameter_descriptions
+                /left_camera/realsense2_camera_manager/parameter_updates
+                /left_obstacle_detector/clustering_pointcloud
+                /optical_flow_estimator/average_vector_image
+                /optical_flow_estimator/filtered_vector_image
+                /optical_flow_estimator/flow_quality
+                /optical_flow_estimator/hist
+                /optical_flow_estimator/orientation
+                /optical_flow_estimator/orientation_rate
+                /optical_flow_estimator/twist
+                /optical_flow_estimator/twist_camera_relative
+                /optical_flow_estimator/twist_correction
+                /optical_flow_estimator/twist_level_quad_uncorrected
+                /optical_flow_estimator/twist_raw
+                /optical_flow_estimator/twist_unrotated
+                /optical_flow_estimator/vector_image
+                /right_camera/depth/camera_info
+                /right_camera/depth/disparity
+                /right_camera/depth/image
+                /right_camera/depth/image_raw
+                /right_camera/depth/image_rect
+                /right_camera/depth/image_rect_raw
+                /right_camera/depth/points
+                /right_camera/depth_rectify_depth/parameter_descriptions
+                /right_camera/depth_rectify_depth/parameter_updates
+                /right_camera/depth_registered/disparity
+                /right_camera/depth_registered/points
+                /right_camera/depth_registered/sw_registered/camera_info
+                /right_camera/depth_registered/sw_registered/image_rect
+                /right_camera/depth_registered/sw_registered/image_rect_raw
+                /right_camera/driver/parameter_descriptions
+                /right_camera/driver/parameter_updates
+                /right_camera/ir/camera_info
+                /right_camera/ir/image_raw
+                /right_camera/ir/image_rect_ir
+                /right_camera/ir2/camera_info
+                /right_camera/ir2/image_raw
+                /right_camera/ir_rectify_ir/parameter_descriptions
+                /right_camera/ir_rectify_ir/parameter_updates
+                /right_camera/rgb/camera_info
+                /right_camera/rgb/image_color
+                /right_camera/rgb/image_mono
+                /right_camera/rgb/image_raw
+                /right_camera/rgb/image_rect_color
+                /right_camera/rgb/image_rect_mono
+                /right_camera/rgb_debayer/parameter_descriptions
+                /right_camera/rgb_debayer/parameter_updates
+                /right_camera/rgb_rectify_color/parameter_descriptions
+                /right_camera/rgb_rectify_color/parameter_updates
+                /right_camera/rgb_rectify_mono/parameter_descriptions
+                /right_camera/rgb_rectify_mono/parameter_updates
+                /right_camera/right_camera_nodelet_manager/bond
+                /right_obstacle_detector/clustering_pointcloud
+            end commented out topics -->
+
+            <node pkg="rosbag" type="record" name="rosbag_mission_7"
+               args="record -o ~/mission7_bags_$(arg platform)/$(arg bagname)
+                                /absolute_vel
+                                /accel/filtered
+                                /altimeter_pose
+                                /altimeter_reading
+                                /back_camera/color/camera_info
+                                /camera_localized_pose
+                                /detected_obstacles
+                                /detected_roombas
+                                /diagnostics
+                                /fc_battery
+                                /fc_imu
+                                /fc_orientation
+                                /fc_status
+                                /floor_detector/boundaries
+                                /floor_detector/boundaries_marker
+                                /floor_detector/detections_image
+                                /floor_detector/line_direction
+                                /floor_detector/line_position
+                                /flow_transformer/twist
+                                /front_camera/color/camera_info
+                                /grid_line_estimator/edges
+                                /grid_line_estimator/line_markers
+                                /grid_line_estimator/line_yaw
+                                /grid_line_estimator/lines
+                                /iarc7_vision_node/roomba_estimator/contours
+                                /iarc7_vision_node/roomba_estimator/detected_rects
+                                /iarc7_vision_node/roomba_estimator/hsv_slice
+                                /joint_states
+                                /landing_detected
+                                /landing_gear_contact_switches
+                                /motor_battery
+                                /obstacle_detection_markers
+                                /obstacle_markers
+                                /obstacles
+                                /odometry/filtered
+                                /roomba_detection_frame_marker
+                                /roomba_detection_markers
+                                /roombas
+                                /rosout
+                                /rosout_agg
+                                /safety
+                                /set_pose
+                                /short_distance_lidar
+                                /short_distance_lidar_pose
+                                /single_roomba_odom
+                                /teensy_looptime_millis
+                                /tf
+                                /tf_static
+                                /uav_direction_command
+                                /velocity
+            "/>
+
+        <machine
+            name="local"
+            address="localhost"
+            default="true" />
     </group>
 
 </launch>
