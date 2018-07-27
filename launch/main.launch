@@ -4,14 +4,6 @@
     <arg name="fake_bat" default="false" doc="create a fake motor battery publisher" />
     <arg name="bagname" default="mission7" doc="string representing the platform" />
 
-    <include file="$(find iarc7_launch)/launch/launch_rosbag.launch">
-        <arg name="platform" value="$(arg platform)" />
-        <arg name="bagname" value="$(arg bagname)" />
-
-        <!-- this is the easiest place for everyone to change where the bagpath is -->
-        <arg name="bagpath" value="/tmp" />
-    </include>
-
     <include file="$(find iarc7_launch)/launch/passive_stack.launch">
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
         <arg name="platform" value="$(arg platform)" />
