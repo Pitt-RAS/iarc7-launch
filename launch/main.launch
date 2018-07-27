@@ -2,7 +2,6 @@
     <arg name="bond_id_namespace" default="safety_bonds" />
     <arg name="platform" default="sim" doc="string representing the platform" />
     <arg name="fake_bat" default="false" doc="create a fake motor battery publisher" />
-    <arg name="bagname" default="mission7" doc="string representing the platform" />
 
     <include file="$(find iarc7_launch)/launch/passive_stack.launch">
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />

@@ -5,7 +5,6 @@
 
     <include file="$(find iarc7_launch)/launch/launch_rosbag.launch">
         <arg name="platform" value="$(arg platform)" />
-        <arg name="bagname" value="$(arg bagname)" />
 
         <!-- this is the easiest place for everyone to change where the bagpath is -->
         <arg name="bagpath" value="/tmp" />
