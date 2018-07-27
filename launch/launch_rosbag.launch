@@ -223,6 +223,11 @@
                                 /optical_flow_estimator/twist_level_quad_uncorrected
                                 /optical_flow_estimator/twist_raw
                                 /optical_flow_estimator/twist_unrotated
+                                /planner_request/cancel
+                                /planner_request/feedback
+                                /planner_request/goal
+                                /planner_request/result
+                                /planner_request/status
                                 /roomba_detection_frame_marker
                                 /roomba_detection_markers
                                 /roombas
