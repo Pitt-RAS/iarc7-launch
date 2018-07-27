@@ -17,7 +17,7 @@ safety_bonds:
         priority: 200
     motion_command_coordinator:
         priority: 250
-    motion_planner: 
+    motion_planner:
         priority: 300
     takeoff_land_abstract:
         priority: 1000
@@ -33,7 +33,7 @@ safety_bonds:
         priority: 1000
     velocity_test_abstract:
         priority: 1000
-    block_roomba_abstract: 
+    block_roomba_abstract:
         priority: 1000
     roomba_request_executer_test_abstract:
         priority: 1000
@@ -43,9 +43,11 @@ safety_bonds:
         priority: 1000
     high_low_speed_test_abstract:
         priority: 1000
-    test_planner_abstract: 
+    test_planner_abstract:
         priority: 1000
     joystick_velocity_test_abstract:
         priority: 1000
-    go_to_roomba_abstract: 
+    go_to_roomba_abstract:
+        priority: 1000
+    test_obstacle_avoidance_abstract:
         priority: 1000
