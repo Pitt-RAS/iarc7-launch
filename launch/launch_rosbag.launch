@@ -1,0 +1,44 @@
+<launch>
+    <arg name="platform" default="sim" doc="string representing the platform" />
+    <arg name="bagname" default="mission7" doc="string representing the platform" />
+    <arg name="bagpath" default="/tmp" />
+
+    <!-- if sim -->
+    <group if="$(eval str(arg('platform')) in ('sim'))">
+        <node pkg="rosbag" type="record" name="rosbag_mission_7"
+           args="record -o $(arg bagpath)/mission7_bags_$(arg platform)/$(arg bagname)
+                           /roomba_detections
+                           /obstacle_detections
+                           /fc_imu
+                           /odometry/filtered
+                           /uav_commands
+                           /cmd_motion_point
+                           /roombas
+                           /obstacles
+                           /tf
+                           /tf_static
+                           /motor_battery" />
+    </group>
+
+    <!-- if 2.0 -->
+    <!-- Todo add all sensor topics and such -->
+    <group if="$(eval str(arg('platform')) in ('2.0'))">
+        <node pkg="rosbag" type="record" name="rosbag_mission_7"
+           args="record -o /mnt/mission7_bags_$(arg platform)/$(arg bagname)
+                           /roomba_detections
+                           /obstacle_detections
+                           /fc_imu
+                           /odometry/filtered
+                           /uav_commands
+                           /cmd_motion_point
+                           /roombas
+                           /obstacles
+                           /tf
+                           /tf_static
+                           /motor_battery
+                           /corrected_image
+                           /floor_detector/detections_image
+                           /optical_flow_estimator/twist" />
+    </group>
+
+</launch>
