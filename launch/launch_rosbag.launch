@@ -127,16 +127,16 @@
 
             <!-- Bag bottom camera only -->
             <group if="$(eval arg('bagbottom') == True and arg('bagside') != True)">
-                  <node pkg="rosbag" type="record" name="rosbag_mission_7"
-                    args="record -o ~/mission7_bags_$(arg platform)_cameras/$(arg bagname)
+                  <node pkg="rosbag" type="record" name="rosbag_mission_7_camera"
+                      args="record -o /home/iarc7/mission7_bags_$(arg platform)/$(arg bagname)_cameras
                                       /corrected_image
                     "/>
             </group>
 
             <!-- Bag side cameras only -->
             <group if="$(eval arg('bagbottom') != True and arg('bagside') == True)">
-                  <node pkg="rosbag" type="record" name="rosbag_mission_7"
-                    args="record -o ~/mission7_bags_$(arg platform)_cameras/$(arg bagname)
+                  <node pkg="rosbag" type="record" name="rosbag_mission_7_camera"
+                      args="record -o /home/iarc7/mission7_bags_$(arg platform)/$(arg bagname)_cameras
                                       /back_camera/color/camera_info
                                       /back_camera/color/image_raw
                                       /back_camera/depth/camera_info
@@ -158,8 +158,8 @@
 
             <!-- bag all cameras -->
             <group if="$(eval arg('bagbottom') == True and arg('bagside') == True)">
-                  <node pkg="rosbag" type="record" name="rosbag_mission_7"
-                    args="record -o ~/mission7_bags_$(arg platform)_cameras/$(arg bagname)
+                  <node pkg="rosbag" type="record" name="rosbag_mission_7_camera"
+                      args="record -o /home/iarc7/mission7_bags_$(arg platform)/$(arg bagname)_cameras
                                       /corrected_image
                                       /back_camera/color/camera_info
                                       /back_camera/color/image_raw
@@ -181,7 +181,7 @@
             </group>
 
             <node pkg="rosbag" type="record" name="rosbag_mission_7"
-               args="record -o ~/mission7_bags_$(arg platform)/$(arg bagname)
+                args="record -o /home/iarc7/mission7_bags_$(arg platform)/$(arg bagname)
                                 /absolute_vel
                                 /accel/filtered
                                 /altimeter_pose
