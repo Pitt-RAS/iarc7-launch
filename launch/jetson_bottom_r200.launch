@@ -1,0 +1,16 @@
+<launch>
+    <include file="$(find realsense_camera)/launch/r200_nodelet_default.launch">
+        <arg name="serial_no" value="1431001093" />
+        <arg name="camera" default="bottom_camera_r200" />
+        <arg name="camera_type" default="R200" />
+        <arg name="mode" default="manual" />
+        <arg name="enable_depth" value="false" />
+        <arg name="image_timestamp_offset" default="-0.070" />
+        <!--<arg name="color_width" default="640" />
+        <arg name="color_height" default="480" />-->
+        <arg name="color_fps" default="30" />
+        <!--<arg name="depth_width" default="480" />
+        <arg name="depth_height" default="360" />
+        <arg name="depth_fps" default="30" />-->
+    </include>
+</launch>
