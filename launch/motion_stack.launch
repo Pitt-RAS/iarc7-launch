@@ -11,12 +11,10 @@
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
 
-<!--
     <include
         file="$(find iarc7_planner)/launch/planner.launch">
         <arg name="platform" value="$(arg platform)" />
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
--->
 
 </launch>
