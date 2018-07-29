@@ -89,5 +89,5 @@
     <xacro:side_camera name="front" pitch="${13*pi/180}" yaw="${0*pi/2}" />
     <xacro:side_camera name="left"  pitch="${18.5*pi/180}" yaw="${1*pi/2}" />
     <xacro:side_camera name="back"  pitch="${15*pi/180}" yaw="${2*pi/2}" />
-    <xacro:side_camera name="right" pitch="${13*pi/180}" yaw="${3*pi/2}" />
+    <xacro:side_camera name="right" pitch="${10*pi/180}" yaw="${3*pi/2}" />
 </robot>
