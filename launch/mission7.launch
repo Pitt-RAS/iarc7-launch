@@ -1,0 +1,22 @@
+<launch>
+    <arg name="platform" default="sim" doc="string representing the platform" />
+
+    <!-- if sim -->
+    <group if="$(eval str(arg('platform')) in ('sim'))">
+        <node name="roomba_controller" pkg="iarc7_simulator" type="roomba_controller.py">
+            <rosparam command="load"
+                file="$(find iarc7_sensors)/param/obstacle_detector.yaml" />
+        </node>
+        <param name="wait_for_start" value="true" />
+    </group>
+
+    <node name="mission7" pkg="iarc7_abstract" type="mission7.py">
+        <rosparam command="load"
+            file="$(find iarc7_abstract)/param/arena_settings_20m.yaml" />
+    </node>
+    <param name="safety_bonds/mission7/form_bond" value="true" />
+
+    <include file="$(find iarc7_launch)/launch/main.launch">
+        <arg name="platform" value="$(arg platform)" />
+    </include>
+</launch>
