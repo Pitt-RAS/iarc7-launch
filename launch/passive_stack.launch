@@ -53,9 +53,9 @@
         <arg name="bond_id_namespace" value="$(arg bond_id_namespace)" />
     </include>
 
-    <include file="$(find iarc7_vision)/launch/floor_detector.launch">
+    <!-- <include file="$(find iarc7_vision)/launch/floor_detector.launch">
         <arg name="platform" value="$(arg platform)" />
-    </include>
+    </include> -->
 
     <node pkg="iarc7_sensors" type="roomba_filter.py" name="roomba_filter" />
 </launch>
