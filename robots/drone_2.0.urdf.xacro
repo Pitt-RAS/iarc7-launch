@@ -11,6 +11,7 @@
     <link name="foot4" />
     <link name="bottom_camera_link" />
     <link name="bottom_camera_rgb_optical_frame" />
+    <link name="bottom_camera_r200_link" />
     <link name="front_camera_link" />
     <link name="left_camera_link" />
     <link name="right_camera_link" />
@@ -67,6 +68,12 @@
         <origin rpy="-${pi/2} 0 -${pi/2}" />
     </joint>
 
+    <joint name="quad_to_bottom_camera_r200_link" type="fixed">
+        <parent link="quad" />
+        <child link="bottom_camera_r200_link" />
+        <origin xyz="0 -0.05 -0.065" rpy="0 ${pi/2} ${0.1}" />
+    </joint>
+
     <xacro:property name="camera_z" value="-0.13" />
     <xacro:property name="camera_horiz_offset" value="0.20" />
     <xacro:macro name="side_camera" params="name pitch yaw">
@@ -80,7 +87,7 @@
     </xacro:macro>
 
     <xacro:side_camera name="front" pitch="${13*pi/180}" yaw="${0*pi/2}" />
-    <xacro:side_camera name="left"  pitch="${35*pi/180}" yaw="${1*pi/2}" />
+    <xacro:side_camera name="left"  pitch="${18.5*pi/180}" yaw="${1*pi/2}" />
     <xacro:side_camera name="back"  pitch="${15*pi/180}" yaw="${2*pi/2}" />
-    <xacro:side_camera name="right" pitch="${30*pi/180}" yaw="${3*pi/2}" />
+    <xacro:side_camera name="right" pitch="${10*pi/180}" yaw="${3*pi/2}" />
 </robot>

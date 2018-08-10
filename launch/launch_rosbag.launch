@@ -150,7 +150,7 @@
                                       /left_camera/depth/camera_info
                                       /left_camera/depth/image_rect_raw
                                       /right_camera/depth/camera_info
-                                      /right_camera/depth/image_raw
+                                      /right_camera/depth/image_rect_raw
                                       /right_camera/rgb/camera_info
                                       /right_camera/rgb/image_raw
                     "/>
@@ -174,7 +174,7 @@
                                       /left_camera/depth/camera_info
                                       /left_camera/depth/image_rect_raw
                                       /right_camera/depth/camera_info
-                                      /right_camera/depth/image_raw
+                                      /right_camera/depth/image_rect_raw
                                       /right_camera/rgb/camera_info
                                       /right_camera/rgb/image_raw
                     "/>

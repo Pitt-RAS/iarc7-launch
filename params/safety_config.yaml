@@ -51,3 +51,5 @@ safety_bonds:
         priority: 1000
     wall_bounce_abstract:
         priority: 1000
+    mission7:
+        priority: 1000
