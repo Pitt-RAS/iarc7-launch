@@ -157,9 +157,9 @@
             <arg name="serial_no"       default="1521000211" />
             <arg name="image_timestamp_offset" default="-0.075" />
             <arg name="mode"            default="manual" />
-            <arg name="color_width"     default="1920" />
-            <arg name="color_height"    default="1080" />
-            <arg name="color_fps"       default="15" />
+            <arg name="color_width"     default="320" />
+            <arg name="color_height"    default="240" />
+            <arg name="color_fps"       default="30" />
             <arg name="depth_width"     default="480" />
             <arg name="depth_height"    default="360" />
             <arg name="depth_fps"       default="30" />

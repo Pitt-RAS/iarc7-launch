@@ -67,7 +67,7 @@
     <joint name="quad_to_forward_camera_link" type="fixed">
         <parent link="quad" />
         <child link="forward_camera_link" />
-        <origin xyz="0.15 -0.02 -0.04" rpy="0 0 0" />
+        <origin xyz="-0.02 -0.15 -0.04" rpy="0 0 -${pi/2}" />
     </joint>
 
 </robot>
